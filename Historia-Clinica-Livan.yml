@@ -1,0 +1,44 @@
+class Paciente {
+  - CI: string
+  - nombre: string
+  - apellidos: string
+  - fechaNacimiento: string
+  - sexo: string
+  - peso: float
+  - estatura: float
+  - direccion: string
+  - imagenes: List<Imagen>
+  - enfermedades: List<Enfermedad>
+}
+
+class Imagen {
+  - nombreArchivo: string
+  - fechaTomada: string
+  - tipo: string
+  - comentariosDoctor: string
+}
+
+class Enfermedad {
+  - nombre: string
+  - fecha: string
+  - tratamiento: string
+}
+
+class Hospital {
+  - pacientes: List<Paciente>
+  
+  + agregarPaciente(paciente: Paciente): void
+  + eliminarPaciente(CI: string): void
+  + buscarPaciente(CI: string): void
+  + obtenerPacientesMayorEstatura(): List<Paciente>
+  + obtenerCantidadPacientesFemeninosConDengue(): int
+  + obtenerPacientesOrdenadosPorNombre(): List<Paciente>
+  + obtenerPacientesOrdenadosPorPeso(): List<Paciente>
+  + agregarPaciente(paciente: Paciente): void
+  + eliminarPaciente(CI: string): void
+  + modificarPaciente(CI: string, paciente: Paciente): void
+}
+
+Paciente "1" *-- "0..*" Imagen
+Paciente "1" *-- "0..*" Enfermedad
+Hospital "1" *-- "0..*" Paciente
